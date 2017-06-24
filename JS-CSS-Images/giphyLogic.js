@@ -1,7 +1,35 @@
 $(document).ready(function(){
 
-		var userInput = $("#userInput").val().trim() + "dog";
-    	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + userInput + "&api_key=f4f070759ff64c25affb59086f863cf6&limit=10";
+    	var topics = ["cars", "dogs", "pizza", "seinfeld", "GoT", "baseball", "coding", "future", "robots"];
+    	var i = 0;
+
+    	// populating buttons for pre-existing array topics
+    	for (i=0; i<topics.length; i++) {
+    		var populateButton = $('<button>');
+    		populateButton.text(topics[i]);
+    		populateButton.attr("id", topics[i]);
+    		populateButton.addClass("button");
+    		$('#gifButtons').append(populateButton);
+    	}
+
+    	$('#addButton').on("click", function(event) {
+    		event.preventDefault();
+    		var userInput = $("#userInput").val().trim();
+    		var addNewButton = $('<button>');
+    		addNewButton.text(userInput);
+    		addNewButton.attr("id", userInput);
+    		addNewButton.addClass("button");
+    		$('#gifButtons').append(addNewButton);
+    		$('#userInput').clear;
+    	})
+
+    	$('.button').on('click', function() {
+    		var currentButtonId = $(this).attr("id");
+    		callAPI();
+    	
+
+    	function callAPI() {
+    	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + currentButtonId + "&api_key=f4f070759ff64c25affb59086f863cf6&limit=10";
 
     	// calling API...
 		$.ajax({
@@ -22,6 +50,7 @@ $(document).ready(function(){
 			var ratingP = "Rating is: " + results[i].rating;
 
 			console.log(response);
+
 			// adding all attributes necessary to the image before appending to page
 			carImage.attr("src", picture);
 			carImage.attr("alt", "car-gif");
@@ -34,10 +63,6 @@ $(document).ready(function(){
 			carDiv.prepend(carImage, ratingP);
 			$('#gifResults').prepend(carDiv);	
 		}
-
-		carButton.text(userInput);
-
-		$('#gifButtons').prepend(carButton);
 
 		$(".gif").on("click", function() {
 
@@ -52,5 +77,7 @@ $(document).ready(function(){
 			}
 		});
 
-		});
+	});	
+};
+});
 	});
