@@ -31,7 +31,7 @@ $(document).ready(function(){
     	},
 
     	displayGifs: function() {
-    		$('.button').on('click', function() {
+    		$('body').on('click', '.button', function() {
     			currentButtonId = $(this).attr("id");
     			callAPI();
     	
@@ -77,6 +77,8 @@ $(document).ready(function(){
 
 		pauseGifs: function() {
 			console.log(this);
+
+			//setting 'Body', because the body is present on the page as the page loads. gifMovement is the class assigned to the gifs as they populate
 			$("body").on("click", ".gifMovement", function() {
 				console.log("BLAH");
 				var state = $(this).attr("data-state");
