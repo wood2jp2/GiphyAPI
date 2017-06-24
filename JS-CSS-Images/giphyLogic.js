@@ -56,57 +56,45 @@ $(document).ready(function(){
 						picture = results[i].images.fixed_height_still.url;
 						var ratingP = "Rating is: " + results[i].rating;
 
-						console.log(response);
-
 						// adding all attributes necessary to the image before appending to page
 						carImage.attr("src", picture);
 						carImage.attr("alt", "car-gif");
 						carImage.attr("data-state", "still");
 						carImage.attr("data-still", picture);
 						carImage.attr("data-animate", results[i].images.fixed_height.url);
-						carImage.addClass("gif");
+						carImage.addClass("gifMovement");
+						carDiv.addClass("gif");
 
 						// appending the rating and the picture together before appending to page
 						carDiv.prepend(carImage, ratingP);
-						$('#gifResults').prepend(carDiv);	
+						$('#gifResults').prepend(carDiv);
 						};
 					});
 				};
 			});
-		},
 
-		// pauseGifs: function() {
-		// 	console.log(this);
-		// 	$(".gif").on("click", function() {
-		// 		console.log("poop again");
-		// 		var state = $(this).attr("data-state");
+			},
 
-		// 		if (state==='still') {
-		// 			$(this).attr("src", $(".gif").attr("data-animate"));
-		// 			$(this).attr("data-state", "animate");
-		// 		} else {
-		// 			$(this).attr("src", $(".gif").attr("data-still"));
-		// 			$(this).attr("data-state", "still");
-		// 		};
-		// 	});
-		// },
-	};
-
-				$(".gif").on("click", function() {
-				console.log("poop again");
+		pauseGifs: function() {
+			console.log(this);
+			$("body").on("click", ".gifMovement", function() {
+				console.log("BLAH");
 				var state = $(this).attr("data-state");
 
 				if (state==='still') {
-					$(this).attr("src", $(".gif").attr("data-animate"));
+					$(this).attr("src", $(this).attr("data-animate"));
 					$(this).attr("data-state", "animate");
 				} else {
-					$(this).attr("src", $(".gif").attr("data-still"));
+					$(this).attr("src", $(this).attr("data-still"));
 					$(this).attr("data-state", "still");
 				};
 			});
+		},
+	};
+
 		giphy.populateButtons();
 		giphy.addButton();
 		giphy.displayGifs();
-		// giphy.pauseGifs();
+		giphy.pauseGifs();
 
 	});
