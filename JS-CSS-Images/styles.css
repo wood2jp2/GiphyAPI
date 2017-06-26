@@ -1,0 +1,30 @@
+.button, #addButton {
+	margin: 10px 10px 10px 10px;
+	border-radius: 10%;
+	background-color: #0059BD;
+	color: white;
+}
+
+.jumbotron {
+	text-align: center;
+	background-image: url("https://pbs.twimg.com/profile_images/699676239620083713/WCUM0RqH.jpg");
+	background-size: 90px 90px;
+	background-color: #0059BD;
+	color: white;
+}
+
+#addButton {
+	margin-bottom: 10px;
+}
+
+body {
+	background-color: #03195A;
+	color: white;
+}
+
+.gif {
+	border: white solid 5px;
+	display: inline-block;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}

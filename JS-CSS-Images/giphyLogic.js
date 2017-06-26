@@ -26,7 +26,7 @@ $(document).ready(function(){
     			addNewButton.attr("id", userInput);
     			addNewButton.addClass("button");
     			$('#gifButtons').append(addNewButton);
-    			$('#userInput').text("");
+    			$('#userInput').val("");
     		});
     	},
 
